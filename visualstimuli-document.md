@@ -93,6 +93,8 @@ if __name__ == '__main__':
 ### 刺激对象的注册和行为控制？
 在visualstimuli包中，目前包含有Block，sinBlock, imageBox三类。**所有刺激对象均需要注册在self.stimuli中，否则将被系统化忽略**。如：
 
+**<font color=#ff0000>注意:刺激对象类初始化的首个参数为self.screen!!!代表在screen上绘制图形</font>**
+
 ```pythonscript
     self.stimuli['prompt'] = Block(self.screen,(300,100),(scrw/2,50),anchor='center',textcolor=(255,255,255),visible=True,text='task:',textsize=50,forecolor=(0,0,0,0))
     self.stimuli['prompt'].reset()
@@ -178,5 +180,11 @@ class Imagebox(object):
     layer = 0
     visible = False
 ```
+
+### 关于定位锚 anchor
+* 定位锚是指坐标原点所在的位置。例如block设置中，anchor='center',position=(100,200),意味着放置block对象时其中心点对齐于position。
+* 支持的定位锚包括：'lefttop'，'left'，'leftbottom'，'righttop'，'right'，'rightbottom'，'top'，'bottom'，'center'，
+
+
 
 
