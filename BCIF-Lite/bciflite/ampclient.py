@@ -14,7 +14,7 @@ from multiprocessing import Queue
 from timeext import timestamp
 
 
-class CythonClient(object):
+class CytonClient(object):
     def __init__(self,expset):
         self.param = EEGparam()
         self.param.samplingrate = expset.samplingrate
@@ -84,6 +84,7 @@ class SigGen(object):
             val = np.array([0.05 * random.randint(-2000, 2000) for i in range(self.param.point)])
         data = np.repeat(val, self.param.eegchannels).reshape(self.param.point, self.param.eegchannels).transpose()
         return 1, data, timestamp.getstamp()
+
 
 
 

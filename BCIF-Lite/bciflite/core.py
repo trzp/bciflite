@@ -11,7 +11,7 @@ from .storage import Storage
 from .bcitypes import *
 
 
-from .ampclient import SigGen,CythonClient
+from .ampclient import SigGen,CytonClient
 from .storage import *
 from .bcitypes import *
 
@@ -61,7 +61,7 @@ class core(threading.Thread):
 
 
         if self.expset.Amp == 'signal_generator': self.amp = SigGen(self.expset)
-        elif self.expset.Amp == 'cython':   self.amp = CythonClient(self.expset)
+        elif self.expset.Amp == 'cyton':   self.amp = CytonClient(self.expset)
         else:raise(IndexError,'unrecognized amplifier: ' + self.expset.Amp)
 
         #param cheack
@@ -79,7 +79,7 @@ class core(threading.Thread):
             for key in stskeys:
                 statbuffer[key] = []
         
-        if self.expset.Amp == 'cython':
+        if self.expset.Amp == 'cyton':
           self.amp.start()
         else:
           while not self.amp.getdata()[0]:  
@@ -132,7 +132,7 @@ class core(threading.Thread):
         if self.expset.save_data:
             self.store_que.put([1,eegbuffer, statbuffer])
         self.stp.set()
-        if self.expset.Amp == 'cython':
+        if self.expset.Amp == 'cyton':
           self.amp.stop()
         time.sleep(2)
         print('\n[core] thread ended!')

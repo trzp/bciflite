@@ -46,7 +46,7 @@ import time
 
 
 from .bcitypes import *
-# from bcitypes import *
+#from bcitypes import *
 
 SAMPLE_RATE = 250.0  # Hz
 START_BYTE = 0xA0  # start of data packet
@@ -740,11 +740,10 @@ class OpenBCISample(object):
 
 
 if __name__ == '__main__':
-    ob = OpenBCICyton(port = 'COM30')
+    ob = Cyton(port = 'COM14')
     ob.start_record()
     c = 0
     clk = time.clock()
-    for i in range(50):
-        d = ob.read_data()
-        # print('read',len(d))
+    for i in range(20):
+        time.sleep(0.1)
     ob.stop_record()
