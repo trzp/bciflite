@@ -43,13 +43,13 @@ class BciApplication(BciCore):      # 我们需要完成的工作就是实现一
         self.expset.path = '.\data'
         
         # self.expset.Amp = 'signal_generator'  #可适用模拟的信号发生器，可用于调试程序
-        # self.expset.amp_channels = 9
-        # self.expset.amp_samplingrate = 250
+        # self.expset.eegchannels = 9
+        # self.expset.samplingrate = 250
         # self.expset.save_data = False
         
         self.expset.Amp = 'cyton'            
-        self.expset.amp_channels = 8
-        self.expset.amp_samplingrate = 250      #cyton 8通道放大器
+        self.expset.eegchannels = 8
+        self.expset.samplingrate = 250      #cyton 8通道放大器
         self.expset.save_data = False
         self.expset.COM = 'COM14'
         
@@ -183,4 +183,20 @@ class EEG:
     eeg = None      #type: numpy.array, shape: channels x points
     state = None    #type: dict, 元素为np.array, 1 x points
     samplingrate = None
+```
+
+## 数据的保存和离线处理
+* 将数据保存下来提供离线分析是研究脑机接口重要的手段。可通过expset的save_data属性来告知bciflite保存数据。
+* 数据的格式：npz
+* 数据的读取示例 以sub-S1R1.npz为例
+```python
+    import numpy as np
+    data = np.load('sub-S1R1.npz')
+    data['ExperimentName']
+    data['SubjectName']
+    data['Time']
+    data['SamplingRate']
+    data['EEGChannels']
+    data['eeg']         #type:numpy.array  shape:channelsxpoints
+    data['trial']       #对应系统设置的各个state序列,1xpoints
 ```
