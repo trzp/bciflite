@@ -1,0 +1,10 @@
+setup.py
+visualstimuli/__init__.py
+visualstimuli/block.py
+visualstimuli/imagebox.py
+visualstimuli/pygame_anchors.py
+visualstimuli/sinblock.py
+visualstimuli.egg-info/PKG-INFO
+visualstimuli.egg-info/SOURCES.txt
+visualstimuli.egg-info/dependency_links.txt
+visualstimuli.egg-info/top_level.txt
