@@ -45,8 +45,8 @@ from timeext import timestamp
 import time
 
 
-# from .bcitypes import *
-from bcitypes import *
+from .bcitypes import *
+# from bcitypes import *
 
 SAMPLE_RATE = 250.0  # Hz
 START_BYTE = 0xA0  # start of data packet

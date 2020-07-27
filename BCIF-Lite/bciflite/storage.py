@@ -1,8 +1,8 @@
 #coding:utf-8
 
 import os
-# from .bcitypes import *
-from bcitypes import *
+from .bcitypes import *
+# from bcitypes import *
 import scipy.io
 from multiprocessing import Queue
 import time
@@ -49,7 +49,6 @@ class Storage(object):
                 return -1
 
     def save(self,eegarray, statearray):
-        print('ok')
         ss = ""
         for key in self.statekeys:
             ss += "%s = statearray['%s'][0]," % (key, key)

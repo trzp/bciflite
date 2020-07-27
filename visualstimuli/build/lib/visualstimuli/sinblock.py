@@ -57,12 +57,12 @@ class sinBlock(object):
         self.textanchor = textanchor
         self.textsize = textsize
         self.textbold = textbold
-        self.text = ''
+        self.text = text
 
         self.frequency = frequency
         self.init_phase = init_phase
         self.duration = duration
-        self.start = False
+        self.__start = False
         self.layer = start
         self.visible = visible
         
@@ -94,10 +94,10 @@ class sinBlock(object):
         
     def show(self):
         if self.visible:
-            if self.start:
+            if self.__start:
                 tt = clock()
                 if tt - self.clk > self.duration:
-                    self.start = False
+                    self.__start = False
                     self.sur.fill(self.forecolor0)
                 t = tt-self.clk
                 f = (math.sin(2*math.pi*self.frequency*t + self.init_phase - 0.5*math.pi)+1)*0.5   #0-1
@@ -126,9 +126,6 @@ class sinBlock(object):
             self._textfont = self.textfont
             self._textbold = self.textbold
             self._textsize = self.textsize
-            
-        if self.start:
-            self.clk = clock()
 
         if self.text != '':
             self.txtsur = self.font_object.render(self.text, 1, self.textcolor)
@@ -136,4 +133,11 @@ class sinBlock(object):
             self.txtblitp = blit_pos(self.txtsur, p0, self.textanchor)
         else:
             self.txtsur = None
+            
+    def start(self):
+        self.clk = clock()
+        self.__start = True
+    
+    def stop(self):
+        self.__start = False
 

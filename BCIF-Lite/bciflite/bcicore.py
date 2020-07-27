@@ -2,11 +2,11 @@
 
 from __future__ import print_function
 import threading
-# from .core import core
-# from .bcitypes import *
+from .core import core
+from .bcitypes import *
 
-from core import core
-from bcitypes import *
+# from core import core
+# from bcitypes import *
 
 from threading import Event
 import pygame

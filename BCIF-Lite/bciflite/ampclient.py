@@ -4,11 +4,11 @@
 import mmap
 import struct
 import numpy as np
-# from .bcitypes import *
-from bcitypes import *
+from .bcitypes import *
+# from bcitypes import *
 import time
 import random
-from cyton2 import *
+from .cyton2 import *
 import multiprocessing
 from multiprocessing import Queue
 from timeext import timestamp
@@ -73,7 +73,7 @@ class SigGen(object):
     #         return 0,0,0
 
     def getdata(self):
-        while time.clock() - self.clk < 0.999:  #确保被调用的间隔为0.1s
+        while time.clock() - self.clk < 0.0999:  #确保被调用的间隔为0.1s
             time.sleep(0.01)
         self.clk = time.clock()
 

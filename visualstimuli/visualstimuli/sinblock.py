@@ -57,7 +57,7 @@ class sinBlock(object):
         self.textanchor = textanchor
         self.textsize = textsize
         self.textbold = textbold
-        self.text = ''
+        self.text = text
 
         self.frequency = frequency
         self.init_phase = init_phase

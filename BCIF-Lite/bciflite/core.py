@@ -6,16 +6,14 @@ import threading
 import multiprocessing
 from multiprocessing import Queue
 
-# from .ampclient import SigGen
-# from .storage import Storage
-# from .bcitypes import *
-
-# from .cyton import *
+from .ampclient import SigGen
+from .storage import Storage
+from .bcitypes import *
 
 
-from ampclient import SigGen,CythonClient
-from storage import *
-from bcitypes import *
+from .ampclient import SigGen,CythonClient
+from .storage import *
+from .bcitypes import *
 
 
 try:    __INF__ = float('inf')
