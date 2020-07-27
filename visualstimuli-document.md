@@ -93,7 +93,7 @@ if __name__ == '__main__':
 ### 刺激对象的注册和行为控制？
 在visualstimuli包中，目前包含有Block，sinBlock, imageBox三类。**所有刺激对象均需要注册在self.stimuli中，否则将被系统化忽略**。如：
 
-<font color=#ff0000 size=9>注意:刺激对象类初始化的首个参数为self.screen!!!代表在screen上绘制图形</font>
+**<font color=#ff0000 size=9>注意:刺激对象类初始化的首个参数为self.screen!!!代表在screen上绘制图形</font>**
 
 ```pythonscript
     self.stimuli['prompt'] = Block(self.screen,(300,100),(scrw/2,50),anchor='center',textcolor=(255,255,255),visible=True,text='task:',textsize=50,forecolor=(0,0,0,0))
