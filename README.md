@@ -199,4 +199,7 @@ class EEG:
     data['EEGChannels']
     data['eeg']         #type:numpy.array  shape:channelsxpoints
     data['trial']       #对应系统设置的各个state序列,1xpoints
+    data['statekey2']
+    data['statekey3']
+    data['statekey...']
 ```
