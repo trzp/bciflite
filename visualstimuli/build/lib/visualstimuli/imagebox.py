@@ -2,11 +2,7 @@
 # -*-coding:utf-8-*-
 
 #FileName: block.py
-#Version: 1.0
-#Author: Jingsheng Tang
-#Date: 2017/8/12
-#Email: mrtang@nudt.edu.cn
-#Github: trzp
+
 
 import pygame
 from .pygame_anchors import *

@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-#Copyright (C) 2018, Nudt, JingshengTang, All Rights Reserved
-#Author: Jingsheng Tang
-#Email: mrtang@nudt.edu.cn
 
 import pygame
 from .pygame_anchors import *

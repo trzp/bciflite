@@ -5,17 +5,17 @@ Author: mrtang
 
 Email: mrtang_cs@163.cn
 
-## visualstimuli是什么?用来干什么？
+## <font color="#0099ff">visualstimuli是什么?用来干什么？</font>
 一个简洁的图形刺激引擎，visualstimuli用于配合bciflite使用，提供脑机接口实验中的反馈和视觉刺激。
 
 
-## GuiEngine运行环境和安装
+## <font color="#0099ff">visualstimuli运行环境和安装</font>
 visualstimuli运行在python3下
 
 通过pip install visualstimuli-0.0.0-py3-none-any.wheel安装
 
 
-## 从一个例子开始visualstimuli的使用
+## <font color="#0099ff">从一个例子开始visualstimuli的使用</font>
 **请逐行阅读代码，以下代码仅展示与visualstimuli紧密相关的部分**
 
 ```pythonscript
@@ -87,13 +87,13 @@ if __name__ == '__main__':
     app.StartRun()
 ```
 
-### screen初始化 *init_screen(siz,color)*
+## <font color="#0099ff">screen初始化 *init_screen(siz,color)*</font>
 用来初始化screen,参数为尺寸（width,height）和背景颜色(r,g,b)。当siz = (0,0)时，启用全屏。
 
-### 刺激对象的注册和行为控制？
+## <font color="#0099ff">刺激对象的注册和行为控制？</font>
 在visualstimuli包中，目前包含有Block，sinBlock, imageBox三类。**所有刺激对象均需要注册在self.stimuli中，否则将被系统化忽略**。如：
 
-**<font color=#ff0000 size=9>注意:刺激对象类初始化的首个参数为self.screen!!!代表在screen上绘制图形</font>**
+**<font color=#ff0000 size=5>注意:刺激对象类初始化的首个参数为self.screen!!!代表在screen上绘制图形</font>**
 
 ```pythonscript
     self.stimuli['prompt'] = Block(self.screen,(300,100),(scrw/2,50),anchor='center',textcolor=(255,255,255),visible=True,text='task:',textsize=50,forecolor=(0,0,0,0))
@@ -106,7 +106,7 @@ if __name__ == '__main__':
     self.stimuli['prompt'].reset()
 ```
 
-### class: Block
+### class: *Block*
 block实现的是方块、方块上的文字、边框，以及它们的组合。
 ```pythonscript
 class Block(object):
@@ -126,7 +126,7 @@ class Block(object):
     visible = False                 #可见
 ```
 
-### class: sinBlock
+### class: *sinBlock*
 sinBlcok在Block的基础上实现方块颜色在**前景色0**和**前景色1**之间按正弦波方式变化。正弦波频率通过frequency和init_phase参数设置。方块的颜色自start开始正弦变化，至计时满duration时终止。
 
 ```pythonscript
@@ -162,7 +162,7 @@ class sinBlock(object):
     ...
 ```
 
-### class: ImageBox
+### class: *ImageBox*
 ```
 class Imagebox(object):
     image = impath,
@@ -181,7 +181,7 @@ class Imagebox(object):
     visible = False
 ```
 
-### 关于定位锚 anchor
+### <font color="#ff0000">关于定位锚 anchor</font>
 * 定位锚是指坐标原点所在的位置。例如block设置中，anchor='center',position=(100,200),意味着放置block对象时其中心点对齐于position。
 * 支持的定位锚包括：'lefttop'，'left'，'leftbottom'，'righttop'，'right'，'rightbottom'，'top'，'bottom'，'center'，
 

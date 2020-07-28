@@ -1,7 +1,6 @@
 #author:mrtang
 #date:2017.7
 #version:1.0
-#email:mrtang@nudt.edu.cn
 
 import numpy as np
 

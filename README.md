@@ -5,21 +5,21 @@ Author: Mrtang
 
 Email: mrtang_cs@163.com
 
-## BCIF-Lite是什么?
+##<font color=#0099ff>BCIF-Lite是什么?</font>
 一个简洁的BCI开发框架。使用python代码编写，以package的方式发布，是您通过pip install bciflite一条命令就可以完成包的安装并开始工作。
 
-## BCIF-Lite框架整体情况
+##<font color=#0099ff>BCIF-Lite框架整体情况</font>
 一个完整的脑机接口一般包括**信号采集**、**刺激/反馈**、**信号处理**、**应用/控制**四个模块，其中**刺激/反馈**模块构成脑机接口中的反馈部分，如反馈信号处理的结果给用户，（学习者需要理解脑机接口一定是一个闭环系统），在诱发型脑机接口中**刺激/反馈**它还是提供如光、声等形式的刺激信号来诱发大脑产生不同的认知响应。
 
 在信号传递方面，涉及到**信号采集**->**信号处理**的流动，**刺激反馈**模块与**信号采集**、**信号处理**模块间的同步等，因此，一个脑机接口具有固定的组成模块和固定的链接关系。脑机接口框架的目标就是提供标准的组件和协议组织这些模块，使得用户只需要关心功能实现而非底层细节。优秀的脑机接口框架包括BCI2000,OpenVibe等，本文所推荐的是一款足够轻量化和简洁的脑机接口框架，其使用风格和BCI2000极为接近。
 
-## 如何安装？环境依赖？
+## <font color=#0099ff>如何安装？环境依赖？</font>
 BCIF-Lite使用python3版本运行。可首先下载bciflite-0-0.wheel文件，然后通过pip install bciflite-0-0.wheel安装
 
 同时BCIF-Lite还依赖于匹配的图形刺激库visualstimuli,稍后会进行介绍
 
-## 以一个例子开始介绍BCIF-Lite的使用
-**请注意逐行阅读注释，以下代码仅展示BCIF-Lite框架基本结构，实验过程并没有实际含义**
+## <font color=#0099ff>以一个例子开始介绍BCIF-Lite的使用</font>
+<font color=#ff0000>**请注意逐行阅读注释，以下代码仅展示BCIF-Lite框架基本结构，实验过程并没有实际含义**</font>
 
 ```javascript
 # -*-coding:utf-8-*-
@@ -119,10 +119,10 @@ if __name__ == '__main__':
     app.StartRun()          #调用StartRun开始执行，你可以看到会出现一个闪烁的小方框，同时命令行还会打印出处理的结果。
 ```
 
-## 设计细节
+## <font color=#0099ff>设计细节</font>
 从上面的例子可以看到，BciCore类的核心函数包括**Initialize**、**Phase**、**Transition**、**Process**,在一般情况下，这几个函数每一个都必须实现。下面逐个进行介绍
 
-## Initialize
+## <font color=#0099ff>Initialize</font>
 功能：初始化，包括初始化**界面布局**，**实验配置**，**状态记录**，**界面布局**部分在visualstimuli中介绍
 
 ### 实验配置
@@ -155,7 +155,7 @@ class BciState:
         ...
 ```
 
-## Phase
+## <font color=#0099ff>Phase</font>
 phase定义了系统运行的状态机，即实验步骤的流程
 
 ### *phase(name,next,duration)* 方法
@@ -171,10 +171,10 @@ phase函数包含三个参数，name,next,duration, **name**参数不可缺省�
 ### *change_phase(phase)* 方法
 立即从跳转到phase中，例如可定义一个缺省duration的phase，然后等待某个条件到达时利用change_phase方法跳转。即状态机的驱动有两种机制，一种是按照设计的时间推动，一种是按照条件来推动
 
-## Transition(phase)
+## <font color=#0099ff>Transition(phase)</font>
 Transition定义了传递函数，即对应每一个状态机状态做什么事情，每当进入一个新的phase时被调用，参数为当前的phase名，该函数**不允许阻塞，不允许使用阻塞型函数**
 
-## Process(sig)
+## <font color=#0099ff>Process(sig)</font>
 处理函数，循环执行，由信号采集模块来驱动，即每收到一个信号包，该函数被调用一次，sig参数即为当前收到的信号。sig为EEG对象,主要包含eeg和state两部分，其中state为字典，对应系统设置的state,每一个元素为一维numpy.array序列，为state值序列。
 
 **该函数大约0.1s执行一次，由于采取了弹性的处理机制，每次收到的信号包内sig和state的长度并不严格一致。**
@@ -185,21 +185,31 @@ class EEG:
     samplingrate = None
 ```
 
-## 数据的保存和离线处理
+## <font color=#0099ff>数据的保存和离线处理</font>
 * 将数据保存下来提供离线分析是研究脑机接口重要的手段。可通过expset的save_data属性来告知bciflite保存数据。
 * 数据的格式：npz
 * 数据的读取示例 以sub-S1R1.npz为例
-```python
-    import numpy as np
-    data = np.load('sub-S1R1.npz')
-    data['ExperimentName']
-    data['SubjectName']
-    data['Time']
-    data['SamplingRate']
-    data['EEGChannels']
-    data['eeg']         #type:numpy.array  shape:channelsxpoints
-    data['trial']       #对应系统设置的各个state序列,1xpoints
-    data['statekey2']
-    data['statekey3']
-    data['statekey...']
+
+```javascript
+import numpy as np
+data = np.load('sub-S1R1.npz')
+data['ExperimentName']
+data['SubjectName']
+data['Time']
+data['SamplingRate']
+data['EEGChannels']
+data['eeg']         #type:numpy.array  shape:channelsxpoints
+data['trial']       #对应系统设置的各个state序列,1xpoints
+data['statekey2']
+data['statekey3']
+data['statekey...']
 ```
+
+## <font color=#0099ff>程序的退出</font>
+程序的退出有3种方式：
+
+* 第一种：按照设定的状态机运行到stop自行退出
+* 第二种：点击图形界面X按钮关闭
+* 第三种：esc按键关闭
+
+* **注意：不要直接关闭命令行窗口，这可能导致某些进程非正常结束，例如导致脑电帽非正常关闭**
